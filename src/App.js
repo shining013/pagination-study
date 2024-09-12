@@ -1,26 +1,21 @@
 import React from "react";
-import { Link, Route, Routes, NavLink } from "react-router-dom";
+import { Route, Routes } from "react-router";
+import LayoutComp from "./layout/LayoutComp";
 import HomeComp from "./components/home/HomeComp";
 import AboutComp from "./components/AboutComp";
 import ProductComp from "./components/ProductComp";
+
 function App() {
   return (
-    <div>
-      <nav>
-        <Link to="/">홈</Link>
-        <NavLink to="/about">about</NavLink>
-        <Link to="/products">product</Link>
-      </nav>
-      App
+    <>
       <Routes>
-        <Route path="/" element={<HomeComp />} />
-        <Route path="/about" element={<AboutComp />} />
-        <Route path="/products/:num" element={<ProductComp />} />
+        <Route path="/" element={<LayoutComp />}>
+          <Route index element={<HomeComp />} />
+          <Route path="/about" element={<AboutComp />} />
+          <Route path="/products" element={<ProductComp />} />
+        </Route>
       </Routes>
-      <footer>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, totam?
-      </footer>
-    </div>
+    </>
   );
 }
 
